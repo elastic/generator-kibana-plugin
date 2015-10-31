@@ -1,0 +1,17 @@
+{
+  "name": "generator-kibana-plugin",
+  "version": "0.1.0",
+  "description": "A Yeoman generator for a Kibana plugin",
+  "files": [
+    "generators/app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "kibana",
+    "plugin"
+  ],
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "yeoman-generator": "^0.20.3"
+  }
+}
