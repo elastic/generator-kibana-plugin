@@ -37,4 +37,4 @@ cd ../kibana
 bin/kibana --dev
 ```
 
-Visit (http://localhost:5601)[http://localhost:5601]
+Visit [http://localhost:5601](http://localhost:5601)
