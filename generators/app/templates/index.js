@@ -1,13 +1,21 @@
 module.exports = function (kibana) {
   return new kibana.Plugin({
-    name: '<%= name %>',
 
+    name: '<%= name %>',
+    require: ['kibana', 'elasticsearch'],
     uiExports: {
       app: {
         title: '<%= title %>',
         description: '<%= description %>',
-        main: 'plugins/<%= name %>/<%= name %>',
-        autoload: kibana.autoload.styles
+        main: 'plugins/<%= name %>/app',
+        injectVars: function (server, options) {
+          var config = server.config();
+          return {
+            kbnIndex: config.get('kibana.index'),
+            esApiVersion: config.get('elasticsearch.apiVersion'),
+            esShardTimeout: config.get('elasticsearch.shardTimeout')
+          };
+        }
       }
     },
 

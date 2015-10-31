@@ -57,8 +57,8 @@ module.exports = generator.Base.extend({
       camelCaseName: _.camelCase(this.appname)
     };
     this.fs.copyTpl(
-      this.templatePath('public/__entry__.js'),
-      this.destinationPath('public/' + this.appname + '.js'),
+      this.templatePath('public/app.js'),
+      this.destinationPath('public/app.js'),
       vars
     );
     this.fs.copyTpl(
