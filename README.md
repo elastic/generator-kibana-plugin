@@ -1,6 +1,6 @@
 # Kibana Plugin Yeoman Generator
 
-A Yeoman generator for Kibana plugins
+This project is a Yeoman generator for bootstrapping a Kibana Plugin. It creates a basic hello world Kibana plugin with all the elements in place so you can easily get started with creating your first Kibana plugin.
 
 ## Getting Started
 
@@ -30,11 +30,11 @@ Download the latest version of Kibana and install it at the same level as your p
 gulp dev
 ```
 
-Run Kibana in dev mode
+With Elasticsearch already running you should now start Kibana in dev mode.
 
 ```
 cd ../kibana
 bin/kibana --dev
 ```
 
-Visit http://localhost:5601
+Visit (http://localhost:5601)[http://localhost:5601]
