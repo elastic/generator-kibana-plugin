@@ -23,6 +23,7 @@ var include = [
   'package.json',
   'index.js',
   'node_modules',
+  'public',
   'server'
 ];
 var exclude = Object.keys(pkg.devDependencies).map(function (name) {

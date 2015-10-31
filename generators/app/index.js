@@ -53,7 +53,8 @@ module.exports = generator.Base.extend({
     var vars = {
       name: this.appname,
       description: this.description,
-      title: _.startCase(this.appname)
+      title: _.startCase(this.appname),
+      camelCaseName: _.camelCase(this.appname)
     };
     this.fs.copyTpl(
       this.templatePath('public/__entry__.js'),
@@ -69,6 +70,19 @@ module.exports = generator.Base.extend({
       this.templatePath('index.js'),
       this.destinationPath('index.js'),
       vars
+    );
+    this.fs.copyTpl(
+      this.templatePath('public/templates/index.html'),
+      this.destinationPath('public/templates/index.html'),
+      vars
+    );
+    this.fs.copy(
+      this.templatePath('public/less/main.less'),
+      this.destinationPath('public/less/main.less')
+    );
+    this.fs.copy(
+      this.templatePath('server/routes/index.js'),
+      this.destinationPath('server/routes/index.js')
     );
     this.fs.copy(
       this.templatePath('gulpfile.js'),
