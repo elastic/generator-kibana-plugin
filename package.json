@@ -2,6 +2,14 @@
   "name": "generator-kibana-plugin",
   "version": "0.1.0",
   "description": "A Yeoman generator for a Kibana plugin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elastic/generator-kibana-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elastic/generator-kibana-plugin/issues"
+  },
+  "license": "Apache 2.0",
   "files": [
     "generators/app"
   ],
