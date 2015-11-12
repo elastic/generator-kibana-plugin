@@ -80,9 +80,10 @@ module.exports = generator.Base.extend({
       this.templatePath('public/less/main.less'),
       this.destinationPath('public/less/main.less')
     );
-    this.fs.copy(
-      this.templatePath('server/routes/index.js'),
-      this.destinationPath('server/routes/index.js')
+    this.fs.copyTpl(
+      this.templatePath('server/routes/example.js'),
+      this.destinationPath('server/routes/example.js'),
+      vars
     );
     this.fs.copy(
       this.templatePath('gulpfile.js'),

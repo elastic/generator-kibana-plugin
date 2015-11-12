@@ -1,3 +1,4 @@
+var exampleRoute = require('./server/routes/example');
 module.exports = function (kibana) {
   return new kibana.Plugin({
 
@@ -27,6 +28,7 @@ module.exports = function (kibana) {
 
     init: function (server, options) {
       // Add server routes and initalize the plugin here
+      exampleRoute(server);
     }
 
   });
