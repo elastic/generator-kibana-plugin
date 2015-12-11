@@ -37,6 +37,7 @@ module.exports = generator.Base.extend({
     var deps = [
       'gulp',
       'bluebird',
+      'babel-eslint',
       'gulp-eslint',
       'gulp-gzip',
       'gulp-tar',
@@ -84,6 +85,10 @@ module.exports = generator.Base.extend({
       this.templatePath('server/routes/example.js'),
       this.destinationPath('server/routes/example.js'),
       vars
+    );
+    this.fs.copy(
+      this.templatePath('.eslintrc'),
+      this.destinationPath('.eslintrc')
     );
     this.fs.copy(
       this.templatePath('gulpfile.js'),
