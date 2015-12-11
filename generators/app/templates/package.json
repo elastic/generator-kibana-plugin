@@ -6,7 +6,8 @@
   "scripts": {
     "start": "gulp dev",
     "build": "gulp build",
-    "package": "gulp package"
+    "package": "gulp package",
+    "test": "gulp test"
   },
   "devDependencies": {
   }
