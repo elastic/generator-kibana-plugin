@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var _ = require('lodash');
 var path = require('path');
-var gulpUtil = require('gulp-util');
+var gutil = require('gulp-util');
 var mkdirp = require('mkdirp');
 var Rsync = require('rsync');
 var Promise = require('bluebird');
@@ -81,6 +81,10 @@ gulp.task('lint', function (done) {
     // To have the process exit with an error code (1) on
     // lint error, return the stream and pipe to failOnError last.
     .pipe(eslint.failOnError());
+});
+
+gulp.task('test', ['lint'], function () {
+  gutil.log(gutil.colors.red('Nothing to test...'));
 });
 
 gulp.task('clean', function (done) {
