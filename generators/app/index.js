@@ -38,6 +38,7 @@ module.exports = generator.Base.extend({
       'gulp',
       'bluebird',
       'babel-eslint',
+      'eslint-plugin-mocha',
       'gulp-eslint',
       'gulp-gzip',
       'gulp-tar',
