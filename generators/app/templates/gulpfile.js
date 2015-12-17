@@ -15,7 +15,7 @@ var pkg = require('./package.json');
 var packageName = pkg.name  + '-' + pkg.version;
 
 // relative location of Kibana install
-var pathToKibana = '../kibana'
+var pathToKibana = '../kibana';
 
 var buildDir = path.resolve(__dirname, 'build');
 var targetDir = path.resolve(__dirname, 'target');
@@ -71,7 +71,14 @@ gulp.task('sync', function (done) {
 });
 
 gulp.task('lint', function (done) {
-  return gulp.src(['server/**/*.js', 'public/**/*.js', 'public/**/*.jsx'])
+  var filePaths = [
+    'gulpfile.js',
+    'server/**/*.js',
+    'public/**/*.js',
+    'public/**/*.jsx',
+  ];
+
+  return gulp.src(filePaths)
     // eslint() attaches the lint output to the eslint property
     // of the file object so it can be used by other modules.
     .pipe(eslint())
