@@ -1,3 +1,7 @@
+require('babel-register')({
+  presets: ['es2015']
+});
+
 var gulp = require('gulp');
 var _ = require('lodash');
 var path = require('path');
