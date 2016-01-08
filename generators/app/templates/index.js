@@ -8,15 +8,7 @@ module.exports = function (kibana) {
       app: {
         title: '<%= title %>',
         description: '<%= description %>',
-        main: 'plugins/<%= name %>/app',
-        injectVars: function (server, options) {
-          var config = server.config();
-          return {
-            kbnIndex: config.get('kibana.index'),
-            esApiVersion: config.get('elasticsearch.apiVersion'),
-            esShardTimeout: config.get('elasticsearch.shardTimeout')
-          };
-        }
+        main: 'plugins/<%= name %>/app'
       }
     },
 

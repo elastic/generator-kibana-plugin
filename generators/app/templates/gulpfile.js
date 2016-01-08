@@ -1,7 +1,11 @@
+require('babel-register')({
+  presets: ['es2015']
+});
+
 var gulp = require('gulp');
 var _ = require('lodash');
 var path = require('path');
-var gulpUtil = require('gulp-util');
+var gutil = require('gulp-util');
 var mkdirp = require('mkdirp');
 var Rsync = require('rsync');
 var Promise = require('bluebird');
@@ -14,10 +18,13 @@ var fs = require('fs');
 var pkg = require('./package.json');
 var packageName = pkg.name  + '-' + pkg.version;
 
+// relative location of Kibana install
+var pathToKibana = '../kibana';
+
 var buildDir = path.resolve(__dirname, 'build');
 var targetDir = path.resolve(__dirname, 'target');
 var buildTarget = path.resolve(buildDir, pkg.name);
-var kibanaPluginDir = path.resolve(__dirname, '../kibana/installedPlugins/' + pkg.name);
+var kibanaPluginDir = path.resolve(__dirname, pathToKibana, 'installedPlugins', pkg.name);
 
 var include = [
   'package.json',
@@ -68,7 +75,14 @@ gulp.task('sync', function (done) {
 });
 
 gulp.task('lint', function (done) {
-  return gulp.src(['server/**/*.js', 'public/**/*.js', 'public/**/*.jsx'])
+  var filePaths = [
+    'gulpfile.js',
+    'server/**/*.js',
+    'public/**/*.js',
+    'public/**/*.jsx',
+  ];
+
+  return gulp.src(filePaths)
     // eslint() attaches the lint output to the eslint property
     // of the file object so it can be used by other modules.
     .pipe(eslint())
@@ -78,6 +92,10 @@ gulp.task('lint', function (done) {
     // To have the process exit with an error code (1) on
     // lint error, return the stream and pipe to failOnError last.
     .pipe(eslint.failOnError());
+});
+
+gulp.task('test', ['lint'], function () {
+  gutil.log(gutil.colors.red('Nothing to test...'));
 });
 
 gulp.task('clean', function (done) {

@@ -24,10 +24,10 @@ cd my-new-plugin
 yo kibana-plugin
 ```
 
-Assuming you've setup a [Kibana development enviroment](https://github.com/elastic/kibana/blob/master/CONTRIBUTING.md#development-environment-setup) at the same level as your plugin directory (an named it `kibana`). Then run the following command inside your plugin directory.
+Assuming you've setup a [Kibana development enviroment](https://github.com/elastic/kibana/blob/master/CONTRIBUTING.md#development-environment-setup) at the same level as your plugin directory (and named it `kibana`). Then run the following command inside your plugin directory.
 
 ```
-gulp dev
+npm start
 ```
 
 With Elasticsearch already running you should now start Kibana in dev mode.

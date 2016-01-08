@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "description": "<%= description %>",
   "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp dev",
+    "build": "gulp build",
+    "package": "gulp package",
+    "test": "gulp test"
+  },
   "devDependencies": {
   }
 }
