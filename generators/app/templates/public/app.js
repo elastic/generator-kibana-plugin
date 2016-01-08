@@ -4,6 +4,8 @@ require('ui/chrome').setNavBackground('#222222').setTabs([]);
 
 var app = require('ui/modules').get('app/<%= name %>', []);
 
+require('ui/routes').enable();
+
 require('ui/routes')
   .when('/', {
     template: require('plugins/<%= name %>/templates/index.html'),
