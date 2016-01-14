@@ -31,6 +31,7 @@ var include = [
   'index.js',
   'node_modules',
   'public',
+  'webpackShims',
   'server'
 ];
 var exclude = Object.keys(pkg.devDependencies).map(function (name) {
