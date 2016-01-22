@@ -41,33 +41,28 @@ var exclude = Object.keys(pkg.devDependencies).map(function (name) {
 function syncPluginTo(dest, done) {
   mkdirp(dest, function (err) {
     if (err) return done(err);
-    Promise.all(include.map(function (name) {
-      var source = path.resolve(__dirname, name);
-      return new Promise(function (resolve, reject) {
-        var rsync = new Rsync();
-        rsync
-          .source(source)
-          .destination(dest)
-          .flags('uav')
-          .recursive(true)
-          .set('delete')
-          .exclude(exclude)
-          .output(function (data) {
-            process.stdout.write(data.toString('utf8'));
-          });
-        rsync.execute(function (err) {
-          if (err) {
-            console.log(err);
-            return reject(err);
-          }
-          resolve();
-        });
-      });
-    }))
-    .then(function () {
+
+    var source = path.resolve(__dirname);
+    var rsync = new Rsync();
+
+    rsync.source(source)
+    .destination(dest)
+    .flags('uav')
+    .recursive(true)
+    .set('delete')
+    .include(include)
+    .exclude(exclude)
+    .output(function (data) {
+      process.stdout.write(data.toString('utf8'));
+    });
+
+    rsync.execute(function (err) {
+      if (err) {
+        console.log(err);
+        return done(err);
+      }
       done();
-    })
-    .catch(done);
+    });
   });
 }
 
