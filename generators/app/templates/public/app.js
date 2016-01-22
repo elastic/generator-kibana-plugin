@@ -1,4 +1,5 @@
 var moment = require('moment');
+require('ui/autoload/all');
 require('plugins/<%= name %>/less/main.less');
 require('ui/chrome').setNavBackground('#222222').setTabs([]);
 
