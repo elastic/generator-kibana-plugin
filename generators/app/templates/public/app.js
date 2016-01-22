@@ -1,7 +1,9 @@
 var moment = require('moment');
+var chrome = require('ui/chrome');
 require('ui/autoload/all');
 require('plugins/<%= name %>/less/main.less');
-require('ui/chrome').setNavBackground('#222222').setTabs([]);
+
+chrome.setNavBackground('#222222').setTabs([]);
 
 var app = require('ui/modules').get('app/<%= name %>', []);
 
@@ -12,7 +14,7 @@ require('ui/routes')
     template: require('plugins/<%= name %>/templates/index.html'),
     resolve: {
       currentTime: function ($http) {
-        return $http.get('/<%= name %>/api/example')
+        return $http.get(chrome.addBasePath('/<%= name %>/api/example'))
         .then(function (resp) {
           return resp.data.time;
         });
