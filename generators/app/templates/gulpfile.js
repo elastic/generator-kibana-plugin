@@ -10,7 +10,7 @@ var mkdirp = require('mkdirp');
 var Rsync = require('rsync');
 var Promise = require('bluebird');
 var eslint = require('gulp-eslint');
-var rimraf = require('rimraf');
+var del = require('del');
 var tar = require('gulp-tar');
 var gzip = require('gulp-gzip');
 var fs = require('fs');
@@ -100,15 +100,8 @@ gulp.task('test', ['lint'], function () {
   gutil.log(gutil.colors.red('Nothing to test...'));
 });
 
-gulp.task('clean', function (done) {
-  Promise.each([buildDir, targetDir], function (dir) {
-    return new Promise(function (resolve, reject) {
-      rimraf(dir, function (err) {
-        if (err) return reject(err);
-        resolve();
-      });
-    });
-  }).nodeify(done);
+gulp.task('clean', function () {
+  return del([buildDir, targetDir]);
 });
 
 gulp.task('build', ['clean'], function (done) {
