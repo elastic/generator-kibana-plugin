@@ -42,7 +42,7 @@ function syncPluginTo(dest, done) {
   mkdirp(dest, function (err) {
     if (err) return done(err);
 
-    var source = path.resolve(__dirname);
+    var source = path.resolve(__dirname) + '/';
     var rsync = new Rsync();
 
     rsync.source(source)
