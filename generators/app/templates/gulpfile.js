@@ -34,8 +34,14 @@ var include = [
   'webpackShims',
   'server'
 ];
-var exclude = Object.keys(pkg.devDependencies).map(function (name) {
-  return path.join('node_modules', name);
+
+var exclude = [
+  'gulpfile.js',
+  '.eslintrc'
+];
+
+Object.keys(pkg.devDependencies).forEach(function (name) {
+  exclude.push(path.join('node_modules', name));
 });
 
 function syncPluginTo(dest, done) {
