@@ -2,7 +2,7 @@ var exampleRoute = require('./server/routes/example');
 module.exports = function (kibana) {
   return new kibana.Plugin({
 
-    name: '<%= name %>',
+    id: '<%= name %>',
     require: ['kibana', 'elasticsearch'],
     uiExports: {
       app: {
