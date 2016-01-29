@@ -47,7 +47,7 @@ module.exports = generator.Base.extend({
       'gulp-util',
       'lodash',
       'mkdirp',
-      'rimraf',
+      'del',
       'rsync'
     ];
     this.npmInstall(deps, { saveDev: true });
