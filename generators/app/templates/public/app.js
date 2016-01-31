@@ -14,7 +14,7 @@ require('ui/routes')
     template: require('plugins/<%= name %>/templates/index.html'),
     resolve: {
       currentTime: function ($http) {
-        return $http.get(chrome.addBasePath('/<%= name %>/api/example'))
+        return $http.get(chrome.addBasePath('/api/<%= name %>/example'))
         .then(function (resp) {
           return resp.data.time;
         });
