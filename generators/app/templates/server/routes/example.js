@@ -1,9 +1,9 @@
-module.exports = function (server) {
+export default function (server) {
 
   server.route({
     path: '/<%= name %>/api/example',
     method: 'GET',
-    handler: function (req, reply) {
+    handler(req, reply) {
       reply({ time: (new Date()).toISOString() });
     }
   });

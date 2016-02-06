@@ -1,32 +1,28 @@
-require('babel-register')({
-  presets: ['es2015']
-});
+import gulp from 'gulp';
+import _ from 'lodash';
+import path from 'path';
+import gutil from 'gulp-util';
+import mkdirp from 'mkdirp';
+import Rsync from 'rsync';
+import Promise from 'bluebird';
+import eslint from 'gulp-eslint';
+import del from 'del';
+import tar from 'gulp-tar';
+import gzip from 'gulp-gzip';
+import fs from 'fs';
 
-var gulp = require('gulp');
-var _ = require('lodash');
-var path = require('path');
-var gutil = require('gulp-util');
-var mkdirp = require('mkdirp');
-var Rsync = require('rsync');
-var Promise = require('bluebird');
-var eslint = require('gulp-eslint');
-var del = require('del');
-var tar = require('gulp-tar');
-var gzip = require('gulp-gzip');
-var fs = require('fs');
+import pkg from './package.json';
 
-var pkg = require('./package.json');
-var packageName = pkg.name  + '-' + pkg.version;
+const packageName = pkg.name  + '-' + pkg.version;
 
 // relative location of Kibana install
-var pathToKibana = '../kibana';
+const pathToKibana = '../kibana';
+const buildDir = path.resolve(__dirname, 'build');
+const targetDir = path.resolve(__dirname, 'target');
+const buildTarget = path.resolve(buildDir, pkg.name);
+const kibanaPluginDir = path.resolve(__dirname, pathToKibana, 'installedPlugins', pkg.name);
 
-var buildDir = path.resolve(__dirname, 'build');
-var targetDir = path.resolve(__dirname, 'target');
-var buildTarget = path.resolve(buildDir, pkg.name);
-var kibanaPluginDir = path.resolve(__dirname, pathToKibana, 'installedPlugins', pkg.name);
-
-var include = [
+const include = [
   'package.json',
   'index.js',
   'node_modules',
@@ -35,7 +31,7 @@ var include = [
   'server'
 ];
 
-var exclude = [
+const exclude = [
   'gulpfile.js',
   '.eslintrc'
 ];
@@ -48,8 +44,8 @@ function syncPluginTo(dest, done) {
   mkdirp(dest, function (err) {
     if (err) return done(err);
 
-    var source = path.resolve(__dirname) + '/';
-    var rsync = new Rsync();
+    const source = path.resolve(__dirname) + '/';
+    const rsync = new Rsync();
 
     rsync.source(source)
     .destination(dest)
@@ -67,6 +63,7 @@ function syncPluginTo(dest, done) {
         console.log(err);
         return done(err);
       }
+
       done();
     });
   });
@@ -77,7 +74,7 @@ gulp.task('sync', function (done) {
 });
 
 gulp.task('lint', function (done) {
-  var filePaths = [
+  const filePaths = [
     'gulpfile.js',
     'server/**/*.js',
     'public/**/*.js',
@@ -118,5 +115,3 @@ gulp.task('package', ['build'], function (done) {
 gulp.task('dev', ['sync'], function (done) {
   gulp.watch(['package.json', 'index.js', 'public/**/*', 'server/**/*'], ['sync', 'lint']);
 });
-
-

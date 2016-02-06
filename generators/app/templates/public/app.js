@@ -1,28 +1,31 @@
-var moment = require('moment');
-var chrome = require('ui/chrome');
-require('ui/autoload/all');
-require('plugins/<%= name %>/less/main.less');
+import moment from 'moment';
+import chrome from 'ui/chrome';
+import uiModules from 'ui/modules';
+import uiRoutes from 'ui/routes';
 
-chrome.setNavBackground('#222222').setTabs([]);
+import 'ui/autoload/styles';
+import 'plugins/<%= name %>/less/main.less';
 
-var app = require('ui/modules').get('app/<%= name %>', []);
+chrome
+  .setNavBackground('#222222')
+  .setTabs([]);
 
-require('ui/routes').enable();
-
-require('ui/routes')
-  .when('/', {
-    template: require('plugins/<%= name %>/templates/index.html'),
-    resolve: {
-      currentTime: function ($http) {
-        return $http.get(chrome.addBasePath('/<%= name %>/api/example'))
-        .then(function (resp) {
-          return resp.data.time;
-        });
-      }
+uiRoutes.enable();
+uiRoutes
+.when('/', {
+  template: require('plugins/<%= name %>/templates/index.html'),
+  resolve: {
+    currentTime($http) {
+      return $http.get('../<%= name %>/api/example').then(function (resp) {
+        return resp.data.time;
+      });
     }
-  });
+  }
+});
 
-app.controller('<%= camelCaseName %>HelloWorld', function ($scope, $route, $interval) {
+uiModules
+.get('app/<%= name %>', [])
+.controller('<%= camelCaseName %>HelloWorld', function ($scope, $route, $interval) {
   $scope.title = '<%= title %>';
   $scope.description = '<%= description %>';
 
@@ -32,5 +35,4 @@ app.controller('<%= camelCaseName %>HelloWorld', function ($scope, $route, $inte
     $scope.currentTime = currentTime.add(1, 'second').format('HH:mm:ss');
   }, 1000);
   $scope.$watch('$destroy', unsubscribe);
-
 });

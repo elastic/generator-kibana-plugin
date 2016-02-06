@@ -1,5 +1,6 @@
-var exampleRoute = require('./server/routes/example');
-module.exports = function (kibana) {
+import exampleRoute from './server/routes/example';
+
+export default function (kibana) {
   return new kibana.Plugin({
 
     id: '<%= name %>',
@@ -12,17 +13,16 @@ module.exports = function (kibana) {
       }
     },
 
-    config: function (Joi) {
+    config(Joi) {
       return Joi.object({
         enabled: Joi.boolean().default(true),
       }).default();
     },
 
-    init: function (server, options) {
+    init(server, options) {
       // Add server routes and initalize the plugin here
       exampleRoute(server);
     }
 
   });
 };
-
