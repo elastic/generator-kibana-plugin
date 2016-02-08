@@ -37,7 +37,9 @@ module.exports = generator.Base.extend({
     var deps = [
       'gulp',
       'bluebird',
+      'babel-core',
       'babel-eslint',
+      'babel-preset-es2015',
       'eslint-plugin-mocha',
       'gulp-eslint',
       'gulp-gzip',
