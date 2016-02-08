@@ -94,6 +94,10 @@ module.exports = generator.Base.extend({
       this.destinationPath('.eslintrc')
     );
     this.fs.copy(
+      this.templatePath('.babelrc'),
+      this.destinationPath('.babelrc')
+    );
+    this.fs.copy(
       this.templatePath('gulpfile.babel.js'),
       this.destinationPath('gulpfile.babel.js')
     );
