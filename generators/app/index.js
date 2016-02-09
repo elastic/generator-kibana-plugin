@@ -44,6 +44,6 @@ module.exports = generator.Base.extend({
       camelCaseName: _.camelCase(this.appname)
     };
 
-    this.fs.copyTpl([this.templatePath('**/*')], '', vars);
+    this.fs.copyTpl([this.templatePath('**/*'), this.templatePath('**/.*')], '', vars);
   }
 });
