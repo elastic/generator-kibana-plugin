@@ -43,46 +43,7 @@ module.exports = generator.Base.extend({
       title: _.startCase(this.appname),
       camelCaseName: _.camelCase(this.appname)
     };
-    this.fs.copyTpl(
-      this.templatePath('public/app.js'),
-      this.destinationPath('public/app.js'),
-      vars
-    );
-    this.fs.copyTpl(
-      this.templatePath('package.json'),
-      this.destinationPath('package.json'),
-      vars
-    );
-    this.fs.copyTpl(
-      this.templatePath('index.js'),
-      this.destinationPath('index.js'),
-      vars
-    );
-    this.fs.copyTpl(
-      this.templatePath('public/templates/index.html'),
-      this.destinationPath('public/templates/index.html'),
-      vars
-    );
-    this.fs.copy(
-      this.templatePath('public/less/main.less'),
-      this.destinationPath('public/less/main.less')
-    );
-    this.fs.copyTpl(
-      this.templatePath('server/routes/example.js'),
-      this.destinationPath('server/routes/example.js'),
-      vars
-    );
-    this.fs.copy(
-      this.templatePath('.eslintrc'),
-      this.destinationPath('.eslintrc')
-    );
-    this.fs.copy(
-      this.templatePath('.babelrc'),
-      this.destinationPath('.babelrc')
-    );
-    this.fs.copy(
-      this.templatePath('gulpfile.babel.js'),
-      this.destinationPath('gulpfile.babel.js')
-    );
+
+    this.fs.copyTpl([this.templatePath('**/*')], '', vars);
   }
 });
