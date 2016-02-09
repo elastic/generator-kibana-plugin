@@ -33,23 +33,7 @@ module.exports = generator.Base.extend({
   },
 
   installingDevDeps: function () {
-    var deps = [
-      'gulp',
-      'bluebird',
-      'babel-eslint',
-      'babel-preset-es2015',
-      'babel-register',
-      'eslint-plugin-mocha',
-      'gulp-eslint',
-      'gulp-gzip',
-      'gulp-tar',
-      'gulp-util',
-      'lodash',
-      'mkdirp',
-      'del',
-      'rsync'
-    ];
-    this.npmInstall(deps, { saveDev: true });
+    this.installDependencies({ npm: true, bower: false })
   },
 
   writing: function () {
