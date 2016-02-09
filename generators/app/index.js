@@ -4,7 +4,6 @@ module.exports = generator.Base.extend({
 
   constructor: function () {
     generator.Base.apply(this, arguments);
-    this.appname = this.appname.replace(/\s+/, '-');
   },
 
   promptingName: function () {
@@ -15,7 +14,7 @@ module.exports = generator.Base.extend({
       message: 'Your Plugin Name',
       default: this.appname
     }, function (answers) {
-      this.appname = answers.name;
+      this.appname = _.kebabCase(answers.name);
       done();
     }.bind(this));
   },
