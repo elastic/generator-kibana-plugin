@@ -39,6 +39,8 @@ module.exports = generator.Base.extend({
       'gulp',
       'bluebird',
       'babel-eslint',
+      'babel-preset-es2015',
+      'babel-register',
       'eslint-plugin-mocha',
       'gulp-eslint',
       'gulp-gzip',
@@ -91,6 +93,10 @@ module.exports = generator.Base.extend({
     this.fs.copy(
       this.templatePath('.eslintrc'),
       this.destinationPath('.eslintrc')
+    );
+    this.fs.copy(
+      this.templatePath('.babelrc'),
+      this.destinationPath('.babelrc')
     );
     this.fs.copy(
       this.templatePath('gulpfile.babel.js'),
