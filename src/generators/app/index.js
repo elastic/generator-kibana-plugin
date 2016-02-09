@@ -5,7 +5,6 @@ module.exports = generator.Base.extend({
 
   constructor: function () {
     generator.Base.apply(this, arguments);
-    this.appname = this.appname.replace(/\s+/, '-');
   },
 
   promptingPluginName: function () {
@@ -16,7 +15,7 @@ module.exports = generator.Base.extend({
       message: 'Your Plugin Name',
       default: this.appname
     }, function (answers) {
-      this.appname = answers.name;
+      this.appname = _.kebabCase(answers.name);
       done();
     }.bind(this));
   },
@@ -35,23 +34,7 @@ module.exports = generator.Base.extend({
   },
 
   installingDevDeps: function () {
-    var deps = [
-      'gulp',
-      'bluebird',
-      'babel-eslint',
-      'babel-preset-es2015',
-      'babel-register',
-      'eslint-plugin-mocha',
-      'gulp-eslint',
-      'gulp-gzip',
-      'gulp-tar',
-      'gulp-util',
-      'lodash',
-      'mkdirp',
-      'del',
-      'rsync'
-    ];
-    this.npmInstall(deps, { saveDev: true });
+    this.installDependencies({ npm: true, bower: false })
   },
 
   writing: function () {
@@ -61,46 +44,7 @@ module.exports = generator.Base.extend({
       title: _.startCase(this.appname),
       camelCaseName: _.camelCase(this.appname)
     };
-    this.fs.copyTpl(
-      this.templatePath('public/app.js'),
-      this.destinationPath('public/app.js'),
-      vars
-    );
-    this.fs.copyTpl(
-      this.templatePath('package.json'),
-      this.destinationPath('package.json'),
-      vars
-    );
-    this.fs.copyTpl(
-      this.templatePath('index.js'),
-      this.destinationPath('index.js'),
-      vars
-    );
-    this.fs.copyTpl(
-      this.templatePath('public/templates/index.html'),
-      this.destinationPath('public/templates/index.html'),
-      vars
-    );
-    this.fs.copy(
-      this.templatePath('public/less/main.less'),
-      this.destinationPath('public/less/main.less')
-    );
-    this.fs.copyTpl(
-      this.templatePath('server/routes/example.js'),
-      this.destinationPath('server/routes/example.js'),
-      vars
-    );
-    this.fs.copy(
-      this.templatePath('.eslintrc'),
-      this.destinationPath('.eslintrc')
-    );
-    this.fs.copy(
-      this.templatePath('.babelrc'),
-      this.destinationPath('.babelrc')
-    );
-    this.fs.copy(
-      this.templatePath('gulpfile.babel.js'),
-      this.destinationPath('gulpfile.babel.js')
-    );
+
+    this.fs.copyTpl([this.templatePath('**/*'), this.templatePath('**/.*')], '', vars);
   }
 });
