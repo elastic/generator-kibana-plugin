@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var generator = require('yeoman-generator');
+
 module.exports = generator.Base.extend({
 
   constructor: function () {
@@ -7,7 +8,7 @@ module.exports = generator.Base.extend({
     this.appname = this.appname.replace(/\s+/, '-');
   },
 
-  promptingName: function () {
+  promptingPluginName: function () {
     var done = this.async();
     this.prompt({
       type: 'input',
