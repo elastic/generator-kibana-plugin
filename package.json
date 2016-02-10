@@ -9,10 +9,14 @@
   "bugs": {
     "url": "https://github.com/elastic/generator-kibana-plugin/issues"
   },
-  "license": "Apache-2.0",
   "files": [
-    "generators/app"
+    "lib"
   ],
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "gulp dev",
+    "prepublish": "gulp build"
+  },
   "keywords": [
     "yeoman-generator",
     "kibana",
@@ -21,5 +25,28 @@
   "dependencies": {
     "lodash": "^3.10.1",
     "yeoman-generator": "^0.20.3"
+  },
+  "devDependencies": {
+    "@elastic/eslint-config-kibana": "0.0.2",
+    "@spalger/babel-presets": "0.0.1",
+    "babel-core": "^6.4.5",
+    "babel-eslint": "^4.1.8",
+    "combiner": "^1.0.1",
+    "del": "^2.2.0",
+    "duplexer2": "^0.1.4",
+    "eslint": "^1.10.3",
+    "eslint-plugin-mocha": "^1.1.0",
+    "eslint-plugin-react": "^3.16.1",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-if": "^2.0.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "highland": "^2.6.0",
+    "rimraf": "^2.5.1",
+    "stream-combiner2": "^1.1.1",
+    "through2": "^2.0.0"
   }
 }
