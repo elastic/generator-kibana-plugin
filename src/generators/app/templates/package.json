@@ -10,6 +10,7 @@
     "test": "gulp test"
   },
   "devDependencies": {
+    "@elastic/eslint-config-kibana": "0.0.2",
     "babel-eslint": "4.1.8",
     "babel-preset-es2015": "6.5.0",
     "babel-register": "6.5.1",

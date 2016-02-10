@@ -27,6 +27,7 @@
     "yeoman-generator": "^0.20.3"
   },
   "devDependencies": {
+    "@elastic/eslint-config-kibana": "0.0.2",
     "@spalger/babel-presets": "0.0.1",
     "babel-core": "^6.4.5",
     "babel-eslint": "^4.1.8",

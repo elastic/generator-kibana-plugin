@@ -34,7 +34,7 @@ module.exports = generator.Base.extend({
   },
 
   installingDevDeps: function () {
-    this.installDependencies({ npm: true, bower: false })
+    this.installDependencies({ npm: true, bower: false });
   },
 
   writing: function () {
