@@ -1,14 +1,32 @@
 /**
  * Run the server tests using mocha
  *
- * This task simply executes mocha in a node.js environment
- * similar to the kibana server. Test files found inside __tests__
- * directories within the server/ directory will all be loaded up
- * and can define test suites with the BDD-style mocha ui
+ * ## writing tests
+ * Server tests are writen just like browser tests, they
+ * are just executed differently.
  *
- *     describe('suite name', function () {
- *       it('meets some condition');
- *     });
+ *  - place tests near the code they test, in __tests__
+ *  	directories throughout the server directory
+ *  - Use the same bdd-style `describe()` and `it()`
+ *  	api to define the suites and cases of your tests.
+ *
+ *        describe('some portion of your code', function () {
+ *          it('should do this thing', function () {
+ *            expect(true).to.be(false);
+ *          });
+ *        });
+ *
+ * ## running the tests
+ * Running the server tests is simple, just execute `npm run test:server`
+ * in your terminal and all of the tests in your server will be run.
+ *
+ * ## focus on the task at hand
+ * To limit the tests that run add `.only` to your `describe()`
+ * or `it()` calls:
+ *
+ *      describe.only('suite name', function () {
+ *        // ...
+ *      });
  *
  */
 
