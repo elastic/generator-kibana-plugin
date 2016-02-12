@@ -1,15 +1,16 @@
 import exampleRoute from './server/routes/example';
+import pkg from './package.json';
 
 export default function (kibana) {
   return new kibana.Plugin({
-
-    id: '<%= name %>',
+    id: pkg.name,
     require: ['kibana', 'elasticsearch'],
-    uiExports: {
+
+    ui: {
       app: {
         title: '<%= title %>',
         description: '<%= description %>',
-        main: 'plugins/<%= name %>/app'
+        main: './app'
       }
     },
 

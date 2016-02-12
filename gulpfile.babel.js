@@ -18,7 +18,7 @@ gulp.task('clean', () => del('lib'));
 
 gulp.task('build', ['clean'], () => {
   return gulp
-  .src('src/**')
+  .src('src/**', { dot: true })
   .pipe(
     ifJsSource(
       transpile(),
