@@ -33,7 +33,7 @@ const include = [
 
 const exclude = [
   'gulpfile.babel.js',
-  '.bablerc',
+  '.babelrc',
   '.eslintrc'
 ];
 
