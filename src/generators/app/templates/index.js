@@ -6,7 +6,7 @@ export default function (kibana) {
     id: pkg.name,
     require: ['kibana', 'elasticsearch'],
 
-    ui: {
+    uiExports: {
       app: {
         title: '<%= title %>',
         description: '<%= description %>',
