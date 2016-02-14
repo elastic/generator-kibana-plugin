@@ -5,18 +5,17 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint",
-    "start": "node ./tasks/start",
-    "test:server": "node ./tasks/test_server.js",
-    "test:browser": "node ./tasks/test_browser.js",
-    "build": "node ./tasks/build.js"
+    "start": "kibana-plugin-helpers start",
+    "test:server": "kibana-plugin-helpers test_server",
+    "test:browser": "kibana-plugin-helpers test_browser",
+    "build": "kibana-plugin-helpers build",
+    "postinstall": "kibana-plugin-helpers postinstall"
   },
   "devDependencies": {
     "@elastic/eslint-config-kibana": "0.0.2",
     "babel-eslint": "4.1.8",
     "eslint": "1.10.3",
     "eslint-plugin-mocha": "1.1.0",
-    "gulp-rename": "1.2.2",
-    "gulp-zip": "3.1.0",
-    "vinyl-fs": "2.3.1"
+    "kibana-plugin": "5.0.0-beta1"
   }
 }
