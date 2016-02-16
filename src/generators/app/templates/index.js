@@ -9,7 +9,10 @@ export default function (kibana) {
         title: '<%= title %>',
         description: '<%= description %>',
         main: 'plugins/<%= name %>/app'
-      }
+      },
+      hacks: [
+        'plugins/<%= name %>/hack'
+      ]
     },
 
     config(Joi) {
