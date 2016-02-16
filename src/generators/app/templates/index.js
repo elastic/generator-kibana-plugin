@@ -2,7 +2,7 @@ import exampleRoute from './server/routes/example';
 
 export default function (kibana) {
   return new kibana.Plugin({
-    require: ['kibana', 'elasticsearch'],
+    require: ['elasticsearch'],
 
     uiExports: {
       app: {
