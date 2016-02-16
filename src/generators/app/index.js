@@ -16,7 +16,7 @@ module.exports = generator.Base.extend({
       message: 'Your Plugin Name',
       default: this.appname
     }, function (answers) {
-      this.appname = _.kebabCase(answers.name);
+      this.appname = _.snakeCase(answers.name);
       done();
     }.bind(this));
   },
