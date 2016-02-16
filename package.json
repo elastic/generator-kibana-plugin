@@ -23,6 +23,7 @@
     "plugin"
   ],
   "dependencies": {
+    "generator-git-init": "^1.1.1",
     "lodash": "^3.10.1",
     "yeoman-generator": "^0.20.3"
   },

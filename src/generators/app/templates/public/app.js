@@ -4,7 +4,8 @@ import uiModules from 'ui/modules';
 import uiRoutes from 'ui/routes';
 
 import 'ui/autoload/styles';
-import 'plugins/<%= name %>/less/main.less';
+import './less/main.less';
+import template from './templates/index.html';
 
 chrome
   .setNavBackground('#222222')
@@ -13,10 +14,10 @@ chrome
 uiRoutes.enable();
 uiRoutes
 .when('/', {
-  template: require('plugins/<%= name %>/templates/index.html'),
+  template,
   resolve: {
     currentTime($http) {
-      return $http.get('../<%= name %>/api/example').then(function (resp) {
+      return $http.get('../api/<%= name %>/example').then(function (resp) {
         return resp.data.time;
       });
     }

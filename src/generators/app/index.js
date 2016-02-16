@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var generator = require('yeoman-generator');
+var pkg = require('../../../package.json');
 
 module.exports = generator.Base.extend({
 
@@ -15,7 +16,7 @@ module.exports = generator.Base.extend({
       message: 'Your Plugin Name',
       default: this.appname
     }, function (answers) {
-      this.appname = _.kebabCase(answers.name);
+      this.appname = _.snakeCase(answers.name);
       done();
     }.bind(this));
   },
@@ -33,10 +34,6 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  installingDevDeps: function () {
-    this.installDependencies({ npm: true, bower: false });
-  },
-
   writing: function () {
     var vars = {
       name: this.appname,
@@ -45,6 +42,23 @@ module.exports = generator.Base.extend({
       camelCaseName: _.camelCase(this.appname)
     };
 
-    this.fs.copyTpl([this.templatePath('**/*'), this.templatePath('**/.*')], '', vars);
-  }
+    var input = [this.templatePath('**/*'), this.templatePath('**/.*')];
+    return this.fs.copyTpl(input, '', vars);
+  },
+
+  initGitRepo: function () {
+    this.composeWith(
+      'git-init',
+      {
+        options: { commit: `Initialize Kibana Plugin (${pkg.name} v${pkg.version})` }
+      },
+      {
+        local: require.resolve('generator-git-init'),
+      }
+    );
+  },
+
+  installingDevDeps: function () {
+    this.installDependencies({ npm: true, bower: false });
+  },
 });
