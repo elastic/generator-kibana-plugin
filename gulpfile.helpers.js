@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import gulpif from 'gulp-if';
 import { obj as combine } from 'stream-combiner2';
-import through2 from 'through2';
+import { obj as through2 } from 'through2';
 import sourcemaps from 'gulp-sourcemaps';
 import babel from 'gulp-babel';
 import { resolve, relative } from 'path';
@@ -38,7 +38,7 @@ export function log(...preamble) {
 
 export function removeOutput() {
   return combine([
-    through2.obj((file, enc, cb) => {
+    through2((file, enc, cb) => {
       del(outputPath(file))
       .then(() => cb(null, file))
       .catch(err => cb(err));

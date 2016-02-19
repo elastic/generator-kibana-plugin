@@ -36,7 +36,7 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  promptingGenerateApp: function() {
+  promptingGenerateApp: function () {
     if (!this.options.advanced) {
       this.generateApp = !this.options.minimal;
       return;
@@ -53,7 +53,7 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  promptingGenerateHack: function() {
+  promptingGenerateHack: function () {
     if (!this.options.advanced) {
       this.generateHack = !this.options.minimal;
       return;
@@ -70,7 +70,7 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  promptingGenerateApi: function() {
+  promptingGenerateApi: function () {
     if (!this.options.advanced) {
       this.generateApi = !this.options.minimal;
       return;
@@ -117,7 +117,11 @@ module.exports = generator.Base.extend({
       input.push(this.templatePath('public/templates/index.html'));
     }
 
-    return this.fs.copyTpl(input, '', vars);
+    this.fs.copyTpl(input, '', vars);
+    this.fs.move(
+      this.destinationPath('..gitignore'),
+      this.destinationPath('.gitignore')
+    );
   },
 
   initGitRepo: function () {
