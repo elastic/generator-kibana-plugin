@@ -42,8 +42,15 @@ module.exports = generator.Base.extend({
       camelCaseName: _.camelCase(this.appname)
     };
 
-    var input = [this.templatePath('**/*'), this.templatePath('**/.*')];
-    return this.fs.copyTpl(input, '', vars);
+    var input = [
+      this.templatePath('**/*'),
+      this.templatePath('**/.*')
+    ];
+    this.fs.copyTpl(input, '', vars);
+    this.fs.move(
+      this.destinationPath('..gitignore'),
+      this.destinationPath('.gitignore')
+    );
   },
 
   initGitRepo: function () {
