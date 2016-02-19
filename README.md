@@ -38,3 +38,11 @@ bin/kibana --dev
 ```
 
 Visit [http://localhost:5601](http://localhost:5601)
+
+## options
+
+If you start the generator with the `--minimal` flag, it will not generate any sample code only
+the bare folder structure.
+
+If you start the generator with the `--advanced` flag, you can choose what sample
+components it should generate for you.
