@@ -1,5 +1,5 @@
 'use strict';
-var yeoman = require('yeoman-generator');
+import * as yeoman from 'yeoman-generator';
 import _ from 'lodash';
 
 module.exports = yeoman.generators.Base.extend({
@@ -36,6 +36,6 @@ module.exports = yeoman.generators.Base.extend({
         id: _.camelCase(this.props.name)
       }
     );
-  },
+  }
 
 });
