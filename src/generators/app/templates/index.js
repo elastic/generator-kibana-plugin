@@ -1,18 +1,22 @@
-import exampleRoute from './server/routes/example';
+<% if (generateApi) { %>import exampleRoute from './server/routes/example';<% } %>
 
 export default function (kibana) {
   return new kibana.Plugin({
     require: ['elasticsearch'],
 
     uiExports: {
+      <% if (generateApp) { %>
       app: {
         title: '<%= title %>',
         description: '<%= description %>',
         main: 'plugins/<%= name %>/app'
       },
+      <% } %>
+      <% if (generateHack) { %>
       hacks: [
         'plugins/<%= name %>/hack'
       ]
+      <% } %>
     },
 
     config(Joi) {
@@ -21,10 +25,12 @@ export default function (kibana) {
       }).default();
     },
 
+    <% if (generateApi) { %>
     init(server, options) {
       // Add server routes and initalize the plugin here
       exampleRoute(server);
     }
+    <% } %>
 
   });
 };
