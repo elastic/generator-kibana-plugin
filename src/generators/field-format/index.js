@@ -13,7 +13,7 @@ module.exports = yeoman.generators.Base.extend({
     },{
       type: 'checkbox',
       name: 'fieldTypes',
-      message: 'For which field types will this converter work?',
+      message: 'For which field types will this formatter work?',
       choices: ['string', 'number', 'boolean', 'date', 'ip', 'attachment', 'geo_point', 'geo_shape', 'murmur3', 'unknown'],
       validate: (value) => {
         return value.length ? true : "You have to specify at least one type.";
