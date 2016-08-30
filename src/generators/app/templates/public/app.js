@@ -7,10 +7,6 @@ import 'ui/autoload/styles';
 import './less/main.less';
 import template from './templates/index.html';
 
-chrome
-  .setNavBackground('#222222')
-  .setTabs([]);
-
 uiRoutes.enable();
 uiRoutes
 .when('/', {
