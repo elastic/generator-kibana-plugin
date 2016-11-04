@@ -36,6 +36,19 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
+  promptingTargetKibanaVersion: function () {
+    var done = this.async();
+    this.prompt({
+      type: 'list',
+      name: 'kbnVersion',
+      message: 'Target Kibana Version',
+      choices: ['5.0.0', '5.1.0', '6.0.0']
+    }, function (answers) {
+      this.kbnVersion = answers.kbnVersion;
+      done();
+    }.bind(this));
+  },
+
   promptingGenerateApp: function () {
     if (!this.options.advanced) {
       this.generateApp = !this.options.minimal;
@@ -93,6 +106,7 @@ module.exports = generator.Base.extend({
       generateApi: this.generateApi,
       generateApp: this.generateApp,
       generateHack: this.generateHack,
+      kbnVersion: this.kbnVersion,
       description: this.description,
       title: _.startCase(this.appname),
       camelCaseName: _.camelCase(this.appname)
