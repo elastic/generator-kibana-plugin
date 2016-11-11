@@ -4,7 +4,7 @@
   "description": "<%= description %>",
   "main": "index.js",
   "kibana": {
-    "version": "kibana"
+    "version": "<%= kbnVersion %>"
   },
   "scripts": {
     "lint": "eslint",
