@@ -4,45 +4,80 @@ This project is a Yeoman generator for bootstrapping a Kibana Plugin. It creates
 
 ## Getting Started
 
-First you need to install Yeoman
+1. Install Yeoman and the Kibana plugin generator
 
-```
-npm install -g yo
-```
+  ```sh
+  npm install -g yo generator-kibana-plugin
+  ```
 
-Then you need to install the Kibana Plugin generator
+1. Setup your [Kibana development enviroment](https://github.com/elastic/kibana/blob/master/CONTRIBUTING.md#development-environment-setup)
 
-```
-npm install -g generator-kibana-plugin
-```
+1. Create a directory for your plugin that is right next to your Kibana directory.
 
-Then generate your new plugin
+  - The Kibana directory must be named `kibana`
+  - `kibana` and your plugin directory must be siblings
 
-```
-mkdir my-new-plugin
-cd my-new-plugin
-yo kibana-plugin
-```
+    ```sh
+    ls ~/wherever/you/store/your/code
+      kibana # <- where you store the Kibana development environment
+      my-new-plugin # <- your plugin directory
+    ```
 
-Assuming you've setup a [Kibana development enviroment](https://github.com/elastic/kibana/blob/master/CONTRIBUTING.md#development-environment-setup) at the same level as your plugin directory (and named it `kibana`). Then run the following command inside your plugin directory.
+1. Double check that you have the right node.js version installed
 
-```
-npm start
-```
+  ```sh
+  node --version # should output the version found in Kibana's .node-version file
+  ```
 
-With Elasticsearch already running you should now start Kibana in dev mode.
+1. Run the generator inside your plugin directory
 
-```
-cd ../kibana
-bin/kibana --dev
-```
+  ```sh
+  cd my-new-plugin
+  yo kibana-plugin
+  ```
 
-Visit [http://localhost:5601](http://localhost:5601)
+1. Get the URL for your Elasticsearch installation (most commonly `http://localhost:9200`)
+
+1. Start Kibana in development mode with your new plugin included
+
+  ```sh
+  npm start -- --elasticsearch.url 'http://localhost:9200'
+
+  # passing the elasticsearch.url here is to demonstrate how arguments can
+  # be passed to kibana with `npm start` but is not actually necessary if
+  # you are running elasticsearch locally
+  ```
+
+1. Visit [http://localhost:5601](http://localhost:5601)
 
 ## options
 
-If you start the generator with the `--minimal` flag, it will not generate any sample code only
+If you start the generator with the `--minimal` flag it will not generate any sample, code only
 the bare folder structure.
 
-If you start the generator with the `--advanced` flag, you can choose what sample
+If you start the generator with the `--advanced` flag you can choose what sample
 components it should generate for you.
+
+## development tasks
+
+  - `npm start`
+
+    Start kibana and have it include this plugin
+
+  - `npm start -- --config kibana.yml`
+
+    You can pass any argument that you would normally send to `bin/kibana` by putting them after `--` when running `npm start`
+
+  - `npm run build`
+
+    Build a distributable archive
+
+  - `npm run test:browser`
+
+    Run the browser tests in a real web browser
+
+  - `npm run test:server`
+
+    Run the server tests using mocha
+
+For more information about any of these commands run `npm run ${task} -- --help`.
