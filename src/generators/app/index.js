@@ -36,19 +36,6 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  promptingTargetKibanaVersion: function () {
-    var done = this.async();
-    this.prompt({
-      type: 'list',
-      name: 'kbnVersion',
-      message: 'Target Kibana Version',
-      choices: ['5.0.0', '5.1.0', '6.0.0', 'master']
-    }, function (answers) {
-      this.kbnVersion = answers.kbnVersion === 'master' ? 'kibana' : answers.kbnVersion;
-      done();
-    }.bind(this));
-  },
-
   promptingGenerateApp: function () {
     if (!this.options.advanced) {
       this.generateApp = !this.options.minimal;

@@ -1,8 +1,11 @@
 {
   "name": "<%= name %>",
-  "version": "<%= kbnVersion %>",
+  "version": "0.0.0",
   "description": "<%= description %>",
   "main": "index.js",
+  "kibana": {
+    "version": "kibana"
+  },
   "scripts": {
     "lint": "eslint",
     "start": "plugin-helpers start",
