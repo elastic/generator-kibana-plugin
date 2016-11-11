@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "eslint",
     "start": "plugin-helpers start",
-    "test:server": "plugin-helpers test_server",
-    "test:browser": "plugin-helpers test_browser",
+    "test:server": "plugin-helpers test:server",
+    "test:browser": "plugin-helpers test:browser",
     "build": "plugin-helpers build",
     "postinstall": "plugin-helpers postinstall"
   },
