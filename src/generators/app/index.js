@@ -42,9 +42,9 @@ module.exports = generator.Base.extend({
       type: 'list',
       name: 'kbnVersion',
       message: 'Target Kibana Version',
-      choices: ['5.0.0', '5.1.0', '6.0.0']
+      choices: ['5.0.0', '5.1.0', '6.0.0', 'master']
     }, function (answers) {
-      this.kbnVersion = answers.kbnVersion;
+      this.kbnVersion = answers.kbnVersion === 'master' ? 'kibana' : answers.kbnVersion;
       done();
     }.bind(this));
   },
