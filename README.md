@@ -4,12 +4,6 @@ This project is a Yeoman generator for bootstrapping a Kibana Plugin. It creates
 
 ## Getting Started
 
-1. Install Yeoman and the Kibana plugin generator
-
-  ```sh
-  npm install -g yo generator-kibana-plugin
-  ```
-
 1. Setup your [Kibana development enviroment](https://github.com/elastic/kibana/blob/master/CONTRIBUTING.md#development-environment-setup)
 
 1. Create a directory for your plugin that is right next to your Kibana directory.
@@ -23,10 +17,18 @@ This project is a Yeoman generator for bootstrapping a Kibana Plugin. It creates
       my-new-plugin # <- your plugin directory
     ```
 
-1. Double check that you have the right node.js version installed
+1. Double check that your Node.js version matches Kibana's [.node-version](https://github.com/elastic/kibana/blob/master/.node-version) file
 
   ```sh
-  node --version # should output the version found in Kibana's .node-version file
+  node --version
+  ```
+  
+  **HINT:** If you install [`nvm`](https://github.com/creationix/nvm#install-script) and [`avn`](https://github.com/wbyoung/avn) then you can create your own `.node-version` file and `avn` will switch to it _automatically_!
+
+1. Install Yeoman and the Kibana plugin generator
+
+  ```sh
+  npm install -g yo generator-kibana-plugin
   ```
 
 1. Run the generator inside your plugin directory
@@ -50,7 +52,7 @@ This project is a Yeoman generator for bootstrapping a Kibana Plugin. It creates
 
 1. Visit [http://localhost:5601](http://localhost:5601)
 
-## options
+## Options
 
 If you start the generator with the `--minimal` flag it will not generate any sample, code only
 the bare folder structure.
@@ -58,7 +60,7 @@ the bare folder structure.
 If you start the generator with the `--advanced` flag you can choose what sample
 components it should generate for you.
 
-## development tasks
+## Development Tasks
 
   - `npm start`
 
