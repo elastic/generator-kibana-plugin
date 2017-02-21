@@ -66,6 +66,23 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
+  promptingGenerateTranslations: function () {
+    if (!this.options.advanced) {
+      this.generateTranslations = !this.options.minimal;
+      return;
+    }
+    var done = this.async();
+    this.prompt({
+      type: 'confirm',
+      name: 'generateTranslations',
+      message: 'Should transation files be generated?',
+      default: ''
+    }, function (answers) {
+      this.generateTranslations = answers.generateTranslations;
+      done();
+    }.bind(this));
+  },
+
   promptingGenerateHack: function () {
     if (!this.options.advanced) {
       this.generateHack = !this.options.minimal;
@@ -105,6 +122,7 @@ module.exports = generator.Base.extend({
       name: this.appname,
       generateApi: this.generateApi,
       generateApp: this.generateApp,
+      generateTranslations: this.generateTranslations,
       generateHack: this.generateHack,
       kbnVersion: this.kbnVersion,
       description: this.description,
@@ -119,6 +137,10 @@ module.exports = generator.Base.extend({
 
     if (this.generateApi) {
       input.push(this.templatePath('server/**/*'));
+    }
+
+    if (this.generateTranslations) {
+      input.push(this.templatePath('translations/**/*'));
     }
 
     if (this.generateHack) {
