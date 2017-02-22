@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import generator from 'yeoman-generator';
 import pkg from '../../../package.json';
+import { checkNodeVersion, checkForKibana } from './env';
 
 module.exports = generator.Base.extend({
   constructor() {
@@ -8,6 +9,11 @@ module.exports = generator.Base.extend({
 
     this.option('advanced');
     this.option('minimal');
+  },
+
+  checkEnvironment() {
+    checkForKibana(this.log);
+    checkNodeVersion(this.log);
   },
 
   promptingPluginName() {
