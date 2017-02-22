@@ -54,11 +54,11 @@ This project is a Yeoman generator for bootstrapping a Kibana Plugin. It creates
 
 ## Options
 
-If you start the generator with the `--minimal` flag it will not generate any sample, code only
-the bare folder structure.
+Run the generator with the `--help` flag for up-to-date option docs.
 
-If you start the generator with the `--advanced` flag you can choose what sample
-components it should generate for you.
+```sh
+yo kibana-plugin --help
+```
 
 ## Development Tasks
 
