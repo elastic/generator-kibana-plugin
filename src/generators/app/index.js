@@ -31,6 +31,20 @@ module.exports = generator.Base.extend({
     checkNodeVersion(this.log);
   },
 
+  checkDeprecatedFlags() {
+    if (this.options.advanced) {
+      this.log.warning('The --advanced flag is deprecated. Please use --custom instead');
+      this.options.custom = this.options.advanced;
+    }
+    Object.defineProperty(this.options, 'advanced', {
+      enumerable: false,
+      get: () => {
+        this.log.error(new Error('use of deprecated option `this.options.advanced`'));
+        return this.options.custom;
+      }
+    });
+  },
+
   promptingPluginName() {
     const done = this.async();
     this.prompt({
@@ -71,7 +85,7 @@ module.exports = generator.Base.extend({
   },
 
   promptingGenerateApp() {
-    if (!this.options.advanced) {
+    if (!this.options.custom) {
       this.generateApp = !this.options.minimal;
       return;
     }
@@ -88,7 +102,7 @@ module.exports = generator.Base.extend({
   },
 
   promptingGenerateTranslations() {
-    if (!this.options.advanced) {
+    if (!this.options.custom) {
       this.generateTranslations = !this.options.minimal;
       return;
     }
@@ -105,7 +119,7 @@ module.exports = generator.Base.extend({
   },
 
   promptingGenerateHack() {
-    if (!this.options.advanced) {
+    if (!this.options.custom) {
       this.generateHack = !this.options.minimal;
       return;
     }
@@ -122,7 +136,7 @@ module.exports = generator.Base.extend({
   },
 
   promptingGenerateApi() {
-    if (!this.options.advanced) {
+    if (!this.options.custom) {
       this.generateApi = !this.options.minimal;
       return;
     }
