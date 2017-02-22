@@ -1,16 +1,16 @@
-var _ = require('lodash');
-var generator = require('yeoman-generator');
-var pkg = require('../../../package.json');
+import _ from 'lodash';
+import generator from 'yeoman-generator';
+import pkg from '../../../package.json';
 
 module.exports = generator.Base.extend({
-
-  constructor: function () {
+  constructor() {
     generator.Base.apply(this, arguments);
+
     this.option('advanced');
     this.option('minimal');
   },
 
-  promptingPluginName: function () {
+  promptingPluginName() {
     var done = this.async();
     this.prompt({
       type: 'input',
@@ -23,7 +23,7 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  promptingDescription: function () {
+  promptingDescription() {
     var done = this.async();
     this.prompt({
       type: 'input',
@@ -36,7 +36,7 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  promptingTargetKibanaVersion: function () {
+  promptingTargetKibanaVersion() {
     var done = this.async();
     this.prompt({
       type: 'list',
@@ -49,7 +49,7 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  promptingGenerateApp: function () {
+  promptingGenerateApp() {
     if (!this.options.advanced) {
       this.generateApp = !this.options.minimal;
       return;
@@ -66,7 +66,7 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  promptingGenerateTranslations: function () {
+  promptingGenerateTranslations() {
     if (!this.options.advanced) {
       this.generateTranslations = !this.options.minimal;
       return;
@@ -83,7 +83,7 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  promptingGenerateHack: function () {
+  promptingGenerateHack() {
     if (!this.options.advanced) {
       this.generateHack = !this.options.minimal;
       return;
@@ -100,7 +100,7 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  promptingGenerateApi: function () {
+  promptingGenerateApi() {
     if (!this.options.advanced) {
       this.generateApi = !this.options.minimal;
       return;
@@ -117,7 +117,7 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
 
-  writing: function () {
+  writing() {
     var vars = {
       name: this.appname,
       generateApi: this.generateApi,
@@ -160,7 +160,7 @@ module.exports = generator.Base.extend({
     );
   },
 
-  initGitRepo: function () {
+  initGitRepo() {
     this.composeWith(
       'git-init',
       {
@@ -172,7 +172,7 @@ module.exports = generator.Base.extend({
     );
   },
 
-  installingDevDeps: function () {
+  installingDevDeps() {
     this.installDependencies({ npm: true, bower: false });
   },
 });
