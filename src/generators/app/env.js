@@ -10,7 +10,7 @@ export function checkForKibana(log) {
     const stat = statSync(KIBANA_DIR);
     if (!stat.isDirectory()) {
       const err = new Error('not a directory');
-      err.code === 'ENOENT';
+      err.code = 'ENOENT';
       throw err;
     }
   } catch (err) {
