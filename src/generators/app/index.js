@@ -7,8 +7,23 @@ module.exports = generator.Base.extend({
   constructor() {
     generator.Base.apply(this, arguments);
 
-    this.option('advanced');
-    this.option('minimal');
+    this.option('advanced', {
+      type: 'Boolean',
+      hide: true,
+      defaults: false
+    });
+    this.option('custom', {
+      type: 'Boolean',
+      alias: 'c',
+      desc: 'Interactively choose which sample components should be generated',
+      defaults: false
+    });
+    this.option('minimal', {
+      type: 'Boolean',
+      alias: 'm',
+      desc: 'Turn off sample code generation, only create the bare folder structure',
+      defaults: false
+    });
   },
 
   checkEnvironment() {
