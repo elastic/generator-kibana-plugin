@@ -32,7 +32,7 @@ module.exports = generator.Base.extend({
   },
 
   promptingPluginName() {
-    var done = this.async();
+    const done = this.async();
     this.prompt({
       type: 'input',
       name: 'name',
@@ -45,7 +45,7 @@ module.exports = generator.Base.extend({
   },
 
   promptingDescription() {
-    var done = this.async();
+    const done = this.async();
     this.prompt({
       type: 'input',
       name: 'description',
@@ -58,7 +58,7 @@ module.exports = generator.Base.extend({
   },
 
   promptingTargetKibanaVersion() {
-    var done = this.async();
+    const done = this.async();
     this.prompt({
       type: 'list',
       name: 'kbnVersion',
@@ -75,7 +75,7 @@ module.exports = generator.Base.extend({
       this.generateApp = !this.options.minimal;
       return;
     }
-    var done = this.async();
+    const done = this.async();
     this.prompt({
       type: 'confirm',
       name: 'generateApp',
@@ -92,7 +92,7 @@ module.exports = generator.Base.extend({
       this.generateTranslations = !this.options.minimal;
       return;
     }
-    var done = this.async();
+    const done = this.async();
     this.prompt({
       type: 'confirm',
       name: 'generateTranslations',
@@ -109,7 +109,7 @@ module.exports = generator.Base.extend({
       this.generateHack = !this.options.minimal;
       return;
     }
-    var done = this.async();
+    const done = this.async();
     this.prompt({
       type: 'confirm',
       name: 'generateHack',
@@ -126,7 +126,7 @@ module.exports = generator.Base.extend({
       this.generateApi = !this.options.minimal;
       return;
     }
-    var done = this.async();
+    const done = this.async();
     this.prompt({
       type: 'confirm',
       name: 'generateApi',
@@ -139,7 +139,7 @@ module.exports = generator.Base.extend({
   },
 
   writing() {
-    var vars = {
+    const vars = {
       name: this.appname,
       generateApi: this.generateApi,
       generateApp: this.generateApp,
@@ -151,7 +151,7 @@ module.exports = generator.Base.extend({
       camelCaseName: _.camelCase(this.appname)
     };
 
-    var input = [
+    const input = [
       this.templatePath('*'),
       this.templatePath('.*')
     ];

@@ -33,8 +33,8 @@ export function checkNodeVersion(log) {
     return version[0] === 'v' ? version.slice(1) : version;
   }
 
-  var requiredNodeV = stripV(require(resolve(KIBANA_DIR, 'package.json')).engines.node);
-  var nodev = stripV(process.version);
+  const requiredNodeV = stripV(require(resolve(KIBANA_DIR, 'package.json')).engines.node);
+  const nodev = stripV(process.version);
   if (requiredNodeV !== nodev) {
     log
       .error('Incorrect Node.js Version')
