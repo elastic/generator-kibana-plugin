@@ -26,9 +26,9 @@ uiModules
   $scope.title = '<%= title %>';
   $scope.description = '<%= description %>';
 
-  var currentTime = moment($route.current.locals.currentTime);
+  const currentTime = moment($route.current.locals.currentTime);
   $scope.currentTime = currentTime.format('HH:mm:ss');
-  var unsubscribe = $interval(function () {
+  const unsubscribe = $interval(function () {
     $scope.currentTime = currentTime.add(1, 'second').format('HH:mm:ss');
   }, 1000);
   $scope.$watch('$destroy', unsubscribe);

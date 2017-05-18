@@ -1,3 +1,4 @@
+<% if (generateTranslations) { %>import { resolve } from 'path';<% } %>
 <% if (generateApi) { %>import exampleRoute from './server/routes/example';<% } %>
 
 export default function (kibana) {
@@ -11,6 +12,11 @@ export default function (kibana) {
         description: '<%= description %>',
         main: 'plugins/<%= name %>/app'
       },
+      <% } %>
+      <% if (generateTranslations) { %>
+      translations: [
+        resolve(__dirname, './translations/es.json')
+      ],
       <% } %>
       <% if (generateHack) { %>
       hacks: [
