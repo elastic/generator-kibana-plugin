@@ -1,6 +1,6 @@
 {
   "name": "generator-kibana-plugin",
-  "version": "6.2.2",
+  "version": "7.0.0",
   "description": "A Yeoman generator for a Kibana plugin",
   "repository": {
     "type": "git",
