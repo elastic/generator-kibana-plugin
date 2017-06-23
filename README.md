@@ -1,5 +1,12 @@
 # Kibana Plugin Yeoman Generator
 
+[![Apache License](https://img.shields.io/badge/license-apache_2.0-a9215a.svg)](https://raw.githubusercontent.com/elastic/template-kibana-plugin/master/LICENSE)
+[![Package Deprecated](https://img.shields.io/badge/status-deprecated-red.svg)](https://github.com/elastic/template-kibana-plugin/)
+
+**DEPRECATION NOTICE**: This package is being deprecated in favor of [template-kibana-plugin](https://github.com/elastic/template-kibana-plugin/)
+
+---
+
 This project is a Yeoman generator for bootstrapping a Kibana Plugin. It creates a basic hello world Kibana plugin with all the elements in place so you can easily get started with creating your first Kibana plugin.
 
 ## Getting Started
