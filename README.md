@@ -9,6 +9,13 @@
 
 This project is a Yeoman generator for bootstrapping a Kibana Plugin. It creates a basic hello world Kibana plugin with all the elements in place so you can easily get started with creating your first Kibana plugin.
 
+## Compatibility
+
+Generator Version | Min Kibana Version | Max Kibana Version
+----------------- | ------------------ | ------------------
+^7.0.0 | 5.5.0 | master
+^6.2.0 | 5.0.0 | 5.4.x
+
 ## Getting Started
 
 1. Setup your [Kibana development enviroment](https://github.com/elastic/kibana/blob/master/CONTRIBUTING.md#development-environment-setup)
